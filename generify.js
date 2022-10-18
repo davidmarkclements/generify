@@ -82,7 +82,11 @@ function generify (source, dest, data, onFile, done) {
   function replacer () {
     if (transforms[this.key]) {
       return transforms[this.key](getNestedValue(data, this.key), {
-        souce: this.source,
+        get souce () {
+          console.warn('DEPRECRATED: use the `source` property')
+          return this.source
+        },
+        source: this.source,
         dest: this.dest,
         key: this.key
       })
